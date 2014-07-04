@@ -13,6 +13,8 @@ namespace LevelEditor.View
     {
         private readonly App controller;
 
+        public string SelectedMapTileType;
+
         public NewMapWindow()
         {
             InitializeComponent();
@@ -43,7 +45,8 @@ namespace LevelEditor.View
 
         void OnMapTileSelected(object sender, RoutedEventArgs e)
         {
-            throw new System.NotImplementedException();
+            RadioButton radioButton = (RadioButton)sender;
+            this.SelectedMapTileType = radioButton.Content.ToString();
         }
     }
 }

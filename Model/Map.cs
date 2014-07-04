@@ -1,6 +1,8 @@
 ﻿
 namespace LevelEditor.Model
 {
+    using System;
+
     class Map
     {
         public MapTile[,] Tiles
@@ -9,9 +11,32 @@ namespace LevelEditor.Model
             set;
         }
 
-        public Map(int x, int y)
+        public Map(int width, int height)
         {
-            Tiles = new MapTile[x, y];
+            if (width <= 0)
+            {
+                throw new ArgumentOutOfRangeException("width", "Width must be greater than zero.");
+            }
+
+            if (height <= 0)
+            {
+                throw new ArgumentOutOfRangeException("height", "Height must be greater than zero.");
+            }
+
+            this.Tiles = new MapTile[width, height];
+        }
+
+        public MapTile this[int x, int y]
+        {
+            get
+            {
+                return this.Tiles[x, y];
+            }
+
+            set
+            {
+                this.Tiles[x, y] = value;
+            }
         }
     }
 }

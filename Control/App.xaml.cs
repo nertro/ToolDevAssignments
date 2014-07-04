@@ -104,6 +104,16 @@ namespace LevelEditor.Control
                 return;
             }
 
+            string defaultMapTile = this.newMapWindow.SelectedMapTileType;
+
+            for (int x = 0; x < width; x++)
+            {
+                for (int y = 0; y < height; y++)
+                {
+                    map[x, y] = new MapTile(x, y, defaultMapTile);
+                }
+            }
+
             this.newMapWindow.Close();
         }
 
